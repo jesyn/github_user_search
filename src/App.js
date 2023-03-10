@@ -3,31 +3,20 @@ import "./App.css";
 import DetailCard from "./components/DetailCard";
 import EmptyCard from "./components/EmptyCard";
 import History from "./components/History";
-import { QueryClient, QueryClientProvider, useQuery } from "react-query";
+import { QueryClient, QueryClientProvider } from "react-query";
+import Formulario from "./components/Formulario";
+
+const queryClient = new QueryClient();
 
 function App() {
   return (
-    <div className="container">
-      <header>
-        <h1>Devfinder</h1>
-        <form>
-          <label htmlFor="search">
-            <input
-              type="text"
-              id="search"
-              name="search"
-              placeholder="Search Github username_"
-              autoComplete="off"
-            />
-            <button type="submit">Search</button>
-          </label>
-        </form>
-      </header>
-      <div className="result">
-        <DetailCard />
+    <QueryClientProvider client={queryClient}>
+      <div className="container">
+        <div className="result">
+          <Formulario />
+        </div>
       </div>
-      <History />
-    </div>
+    </QueryClientProvider>
   );
 }
 
